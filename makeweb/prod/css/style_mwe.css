@@ -1,0 +1,487 @@
+/*** Style MWE ***/
+
+/* - Is main style that overwrite Bootstrap4 only [not include other plugin yet] */
+
+/* - Every website has the same */
+
+/* - Not have any theme color >>>> goto "theme-system" or "style_[customer]" */
+
+/* Text */
+.fs-40 { font-size: 40px; }
+.fs-36 { font-size: 36px; }
+.fs-30 { font-size: 30px; }
+.fs-24 { font-size: 24px; }
+.fs-21 { font-size: 21px; }
+.fs-20 { font-size: 20px; }
+.fs-18 { font-size: 18px; }
+.fs-16 { font-size: 16px !important; }
+.fs-14 { font-size: 14px !important; }
+.fs-12 { font-size: 12px; }
+.ff-system { font-family: "Open Sans", Tahoma !important; }
+.f-system-12 { font-family: "Open Sans", Tahoma !important; font-size: 12px; }
+.f-system-14 { font-family: "Open Sans", Tahoma !important; font-size: 14px; }
+.f-system-16 { font-family: "Open Sans", Tahoma !important; font-size: 16px; }
+.f-system-20 { font-family: "Open Sans", Tahoma !important; font-size: 20px; }
+.f-system-22 { font-family: "Open Sans", Tahoma !important; font-size: 22px; }
+.f-system-24 { font-family: "Open Sans", Tahoma !important; font-size: 24px; }
+.fs-ta-40 { font-family: "Tahoma"; font-size: 40px; line-height: 1.2; }
+.fs-ta-36 { font-family: "Tahoma"; font-size: 36px; line-height: 1.2; }
+.fs-ta-32 { font-family: "Tahoma"; font-size: 32px; line-height: 1.2; }
+.fs-ta-30 { font-family: "Tahoma"; font-size: 30px; line-height: 1.2; }
+.fs-ta-24 { font-family: "Tahoma"; font-size: 24px; line-height: 1.2; }
+.fs-ta-21 { font-family: "Tahoma"; font-size: 21px; line-height: 1.2; }
+.fs-ta-20 { font-family: "Tahoma"; font-size: 20px; line-height: 1.2; }
+.fs-ta-18 { font-family: "Tahoma"; font-size: 18px; line-height: 1.2; }
+.fs-ta-16 { font-family: "Tahoma"; font-size: 16px; line-height: 1.2; }
+.fs-ta-14 { font-family: "Tahoma"; font-size: 14px; line-height: 1.2; }
+.fs-ta-12 { font-family: "Tahoma"; font-size: 12px; line-height: 1.2; }
+@media (min-width: 576px) {
+  .fs-sm-ta-40 { font-family: "Tahoma"; font-size: 40px; line-height: 1.2; }
+  .fs-sm-ta-36 { font-family: "Tahoma"; font-size: 36px; line-height: 1.2; }
+  .fs-sm-ta-32 { font-family: "Tahoma"; font-size: 32px; line-height: 1.2; }
+  .fs-sm-ta-30 { font-family: "Tahoma"; font-size: 30px; line-height: 1.2; }
+  .fs-sm-ta-24 { font-family: "Tahoma"; font-size: 24px; line-height: 1.2; }
+  .fs-sm-ta-21 { font-family: "Tahoma"; font-size: 21px; line-height: 1.2; }
+  .fs-sm-ta-20 { font-family: "Tahoma"; font-size: 20px; line-height: 1.2; }
+  .fs-sm-ta-18 { font-family: "Tahoma"; font-size: 18px; line-height: 1.2; }
+  .fs-sm-ta-16 { font-family: "Tahoma"; font-size: 16px; line-height: 1.2; }
+  .fs-sm-ta-14 { font-family: "Tahoma"; font-size: 14px; line-height: 1.2; }
+  .fs-sm-ta-12 { font-family: "Tahoma"; font-size: 12px; line-height: 1.2; }
+}
+@media (min-width: 768px) {
+  .fs-md-ta-40 { font-family: "Tahoma"; font-size: 40px; line-height: 1.2; }
+  .fs-md-ta-36 { font-family: "Tahoma"; font-size: 36px; line-height: 1.2; }
+  .fs-md-ta-32 { font-family: "Tahoma"; font-size: 32px; line-height: 1.2; }
+  .fs-md-ta-30 { font-family: "Tahoma"; font-size: 30px; line-height: 1.2; }
+  .fs-md-ta-24 { font-family: "Tahoma"; font-size: 24px; line-height: 1.2; }
+  .fs-md-ta-21 { font-family: "Tahoma"; font-size: 21px; line-height: 1.2; }
+  .fs-md-ta-20 { font-family: "Tahoma"; font-size: 20px; line-height: 1.2; }
+  .fs-md-ta-18 { font-family: "Tahoma"; font-size: 18px; line-height: 1.2; }
+  .fs-md-ta-16 { font-family: "Tahoma"; font-size: 16px; line-height: 1.2; }
+  .fs-md-ta-14 { font-family: "Tahoma"; font-size: 14px; line-height: 1.2; }
+  .fs-md-ta-12 { font-family: "Tahoma"; font-size: 12px; line-height: 1.2; }
+}
+@media (min-width: 992px) {
+  .fs-lg-ta-40 { font-family: "Tahoma"; font-size: 40px; line-height: 1.2; }
+  .fs-lg-ta-36 { font-family: "Tahoma"; font-size: 36px; line-height: 1.2; }
+  .fs-lg-ta-32 { font-family: "Tahoma"; font-size: 32px; line-height: 1.2; }
+  .fs-lg-ta-30 { font-family: "Tahoma"; font-size: 30px; line-height: 1.2; }
+  .fs-lg-ta-24 { font-family: "Tahoma"; font-size: 24px; line-height: 1.2; }
+  .fs-lg-ta-21 { font-family: "Tahoma"; font-size: 21px; line-height: 1.2; }
+  .fs-lg-ta-20 { font-family: "Tahoma"; font-size: 20px; line-height: 1.2; }
+  .fs-lg-ta-18 { font-family: "Tahoma"; font-size: 18px; line-height: 1.2; }
+  .fs-lg-ta-16 { font-family: "Tahoma"; font-size: 16px; line-height: 1.2; }
+  .fs-lg-ta-14 { font-family: "Tahoma"; font-size: 14px; line-height: 1.2; }
+  .fs-lg-ta-12 { font-family: "Tahoma"; font-size: 12px; line-height: 1.2; }
+}
+
+/* Margin */
+.m-10 { margin: 10px !important; }
+.my-10 { margin-top: 10px !important; margin-bottom: 10px !important; }
+.mx-10 { margin-left: 10px !important; margin-right: 10px !important; }
+.mt-10 { margin-top: 10px !important; }
+.mb-10 { margin-bottom: 10px !important; }
+.ml-10 { margin-left: 10px !important; }
+.mr-10 { margin-right: 10px !important; }
+.m-15 { margin: 15px !important; }
+.my-15 { margin-top: 15px !important; margin-bottom: 15px !important; }
+.mx-15 { margin-left: 15px !important; margin-right: 15px !important; }
+.mt-15 { margin-top: 15px !important; }
+.mb-15 { margin-bottom: 15px !important; }
+.ml-15 { margin-left: 15px !important; }
+.mr-15 { margin-right: 15px !important; }
+.m-20 { margin: 20px !important; }
+.my-20 { margin-top: 20px !important; margin-bottom: 20px !important; }
+.mx-20 { margin-left: 20px !important; margin-right: 20px !important; }
+.mt-20 { margin-top: 20px !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.ml-20 { margin-left: 20px !important; }
+.mr-20 { margin-right: 20px !important; }
+.m-25 { margin: 25px !important; }
+.my-25 { margin-top: 25px !important; margin-bottom: 25px !important; }
+.mx-25 { margin-left: 25px !important; margin-right: 25px !important; }
+.mt-25 { margin-top: 25px !important; }
+.mb-25 { margin-bottom: 25px !important; }
+.ml-25 { margin-left: 25px !important; }
+.mr-25 { margin-right: 25px !important; }
+
+.m-0px { margin: 0px !important; }
+.my-0px { margin-top: 0px !important; margin-bottom: 0px !important; }
+.mx-0px { margin-left: 0px !important; margin-right: 0px !important; }
+.mt-0px { margin-top: 0px !important; }
+.ml-0px { margin-left: 0px !important; }
+.mr-0px { margin-right: 0px !important; }
+.mb-0px { margin-bottom: 0px !important; }
+.m-5px { margin: 5px !important; }
+.my-5px { margin-top: 5px !important; margin-bottom: 5px !important; }
+.mx-5px { margin-left: 5px !important; margin-right: 5px !important; }
+.mt-5px { margin-top: 5px !important; }
+.ml-5px { margin-left: 5px !important; }
+.mr-5px { margin-right: 5px !important; }
+.mb-5px { margin-bottom: 5px !important; }
+.m-10px { margin: 10px !important; }
+.my-10px { margin-top: 10px !important; margin-bottom: 10px !important; }
+.mx-10px { margin-left: 10px !important; margin-right: 10px !important; }
+.mt-10px { margin-top: 10px !important; }
+.ml-10px { margin-left: 10px !important; }
+.mr-10px { margin-right: 10px !important; }
+.mb-10px { margin-bottom: 10px !important; }
+.m-15px { margin: 15px !important; }
+.my-15px { margin-top: 15px !important; margin-bottom: 15px !important; }
+.mx-15px { margin-left: 15px !important; margin-right: 15px !important; }
+.mt-15px { margin-top: 15px !important; }
+.ml-15px { margin-left: 15px !important; }
+.mr-15px { margin-right: 15px !important; }
+.mb-15px { margin-bottom: 15px !important; }
+.m-20px { margin: 20px !important; }
+.my-20px { margin-top: 20px !important; margin-bottom: 20px !important; }
+.mx-20px { margin-left: 20px !important; margin-right: 20px !important; }
+.mt-20px { margin-top: 20px !important; }
+.ml-20px { margin-left: 20px !important; }
+.mr-20px { margin-right: 20px !important; }
+.mb-20px { margin-bottom: 20px !important; }
+.m-30px { margin: 30px !important; }
+.my-30px { margin-top: 30px !important; margin-bottom: 30px !important; }
+.mx-30px { margin-left: 30px !important; margin-right: 30px !important; }
+.mt-30px { margin-top: 30px !important; }
+.ml-30px { margin-left: 30px !important; }
+.mr-30px { margin-right: 30px !important; }
+.mb-30px { margin-bottom: 30px !important; }
+.m-40px { margin: 40px !important; }
+.my-40px { margin-top: 40px !important; margin-bottom: 40px !important; }
+.mx-40px { margin-left: 40px !important; margin-right: 40px !important; }
+.mt-40px { margin-top: 40px !important; }
+.ml-40px { margin-left: 40px !important; }
+.mr-40px { margin-right: 40px !important; }
+.mb-40px { margin-bottom: 40px !important; }
+
+/* Padding */
+.p-10 { padding: 10px !important; }
+.py-10 { padding-top: 10px !important; padding-bottom: 10px !important; }
+.px-10 { padding-left: 10px !important; padding-right: 10px !important; }
+.pt-10 { padding-top: 10px !important; }
+.pb-10 { padding-bottom: 10px !important; }
+.pl-10 { padding-left: 10px !important; }
+.pr-10 { padding-right: 10px !important; }
+.p-15 { padding: 15px !important; }
+.py-15 { padding-top: 15px !important; padding-bottom: 15px !important; }
+.px-15 { padding-left: 15px !important; padding-right: 15px !important; }
+.pt-15 { padding-top: 15px !important; }
+.pb-15 { padding-bottom: 15px !important; }
+.pl-15 { padding-left: 15px !important; }
+.pr-15 { padding-right: 15px !important; }
+.p-20 { padding: 20px !important; }
+.py-20 { padding-top: 20px !important; padding-bottom: 20px !important; }
+.px-20 { padding-left: 20px !important; padding-right: 20px !important; }
+.pt-20 { padding-top: 20px !important; }
+.pb-20 { padding-bottom: 20px !important; }
+.pl-20 { padding-left: 20px !important; }
+.pr-20 { padding-right: 20px !important; }
+.p-25 { padding: 25px !important; }
+.py-25 { padding-top: 25px !important; padding-bottom: 25px !important; }
+.px-25 { padding-left: 25px !important; padding-right: 25px !important; }
+.pt-25 { padding-top: 25px !important; }
+.pb-25 { padding-bottom: 25px !important; }
+.pl-25 { padding-left: 25px !important; }
+.pr-25 { padding-right: 25px !important; }
+
+.p-0px { padding: 0px !important; }
+.py-0px { padding-top: 0px !important; padding-bottom: 0px !important; }
+.px-0px { padding-left: 0px !important; padding-right: 0px !important; }
+.pt-0px { padding-top: 0px !important; }
+.pl-0px { padding-left: 0px !important; }
+.pr-0px { padding-right: 0px !important; }
+.pb-0px { padding-bottom: 0px !important; }
+.p-5px { padding: 5px !important; }
+.py-5px { padding-top: 5px !important; padding-bottom: 5px !important; }
+.px-5px { padding-left: 5px !important; padding-right: 5px !important; }
+.pt-5px { padding-top: 5px !important; }
+.pl-5px { padding-left: 5px !important; }
+.pr-5px { padding-right: 5px !important; }
+.pb-5px { padding-bottom: 5px !important; }
+.p-10px { padding: 10px !important; }
+.py-10px { padding-top: 10px !important; padding-bottom: 10px !important; }
+.px-10px { padding-left: 10px !important; padding-right: 10px !important; }
+.pt-10px { padding-top: 10px !important; }
+.pl-10px { padding-left: 10px !important; }
+.pr-10px { padding-right: 10px !important; }
+.pb-10px { padding-bottom: 10px !important; }
+.p-15px { padding: 15px !important; }
+.py-15px { padding-top: 15px !important; padding-bottom: 15px !important; }
+.px-15px { padding-left: 15px !important; padding-right: 15px !important; }
+.pt-15px { padding-top: 15px !important; }
+.pl-15px { padding-left: 15px !important; }
+.pr-15px { padding-right: 15px !important; }
+.pb-15px { padding-bottom: 15px !important; }
+.p-20px { padding: 20px !important; }
+.py-20px { padding-top: 20px !important; padding-bottom: 20px !important; }
+.px-20px { padding-left: 20px !important; padding-right: 20px !important; }
+.pt-20px { padding-top: 20px !important; }
+.pl-20px { padding-left: 20px !important; }
+.pr-20px { padding-right: 20px !important; }
+.pb-20px { padding-bottom: 20px !important; }
+.p-30px { padding: 30px !important; }
+.py-30px { padding-top: 30px !important; padding-bottom: 30px !important; }
+.px-30px { padding-left: 30px !important; padding-right: 30px !important; }
+.pt-30px { padding-top: 30px !important; }
+.pl-30px { padding-left: 30px !important; }
+.pr-30px { padding-right: 30px !important; }
+.pb-30px { padding-bottom: 30px !important; }
+.p-40px { padding: 40px !important; }
+.py-40px { padding-top: 40px !important; padding-bottom: 40px !important; }
+.px-40px { padding-left: 40px !important; padding-right: 40px !important; }
+.pt-40px { padding-top: 40px !important; }
+.pl-40px { padding-left: 40px !important; }
+.pr-40px { padding-right: 40px !important; }
+.pb-40px { padding-bottom: 40px !important; }
+@media (min-width: 576px) {
+  .p-sm-0px { padding: 0px !important; }
+  .py-sm-0px { padding-top: 0px !important; padding-bottom: 0px !important; }
+  .px-sm-0px { padding-left: 0px !important; padding-right: 0px !important; }
+  .pt-sm-0px { padding-top: 0px !important; }
+  .pl-sm-0px { padding-left: 0px !important; }
+  .pr-sm-0px { padding-right: 0px !important; }
+  .pb-sm-0px { padding-bottom: 0px !important; }
+  .p-sm-15px { padding: 15px !important; }
+  .py-sm-15px { padding-top: 15px !important; padding-bottom: 15px !important; }
+  .px-sm-15px { padding-left: 15px !important; padding-right: 15px !important; }
+  .pt-sm-15px { padding-top: 15px !important; }
+  .pl-sm-15px { padding-left: 15px !important; }
+  .pr-sm-15px { padding-right: 15px !important; }
+  .pb-sm-15px { padding-bottom: 15px !important; }
+}
+@media (min-width: 768px) {
+  .p-md-0px { padding: 0px !important; }
+  .py-md-0px { padding-top: 0px !important; padding-bottom: 0px !important; }
+  .px-md-0px { padding-left: 0px !important; padding-right: 0px !important; }
+  .pt-md-0px { padding-top: 0px !important; }
+  .pl-md-0px { padding-left: 0px !important; }
+  .pr-md-0px { padding-right: 0px !important; }
+  .pb-md-0px { padding-bottom: 0px !important; }
+  .p-md-15px { padding: 15px !important; }
+  .py-md-15px { padding-top: 15px !important; padding-bottom: 15px !important; }
+  .px-md-15px { padding-left: 15px !important; padding-right: 15px !important; }
+  .pt-md-15px { padding-top: 15px !important; }
+  .pl-md-15px { padding-left: 15px !important; }
+  .pr-md-15px { padding-right: 15px !important; }
+  .pb-md-15px { padding-bottom: 15px !important; }
+}
+@media (min-width: 992px) {
+  .p-lg-0px { padding: 0px !important; }
+  .py-lg-0px { padding-top: 0px !important; padding-bottom: 0px !important; }
+  .px-lg-0px { padding-left: 0px !important; padding-right: 0px !important; }
+  .pt-lg-0px { padding-top: 0px !important; }
+  .pl-lg-0px { padding-left: 0px !important; }
+  .pr-lg-0px { padding-right: 0px !important; }
+  .pb-lg-0px { padding-bottom: 0px !important; }
+  .p-lg-15px { padding: 15px !important; }
+  .py-lg-15px { padding-top: 15px !important; padding-bottom: 15px !important; }
+  .px-lg-15px { padding-left: 15px !important; padding-right: 15px !important; }
+  .pt-lg-15px { padding-top: 15px !important; }
+  .pl-lg-15px { padding-left: 15px !important; }
+  .pr-lg-15px { padding-right: 15px !important; }
+  .pb-lg-15px { padding-bottom: 15px !important; }
+}
+
+
+/* Size */
+@media (min-width: 576px) {
+  .w-sm-25 { width: 25% !important; }
+  .w-sm-50 { width: 50% !important; }
+  .w-sm-75 { width: 75% !important; }
+  .w-sm-100 { width: 100% !important; }
+  .w-sm-auto { width: auto !important; }
+}
+@media (min-width: 768px) {
+  .w-md-25 { width: 25% !important; }
+  .w-md-50 { width: 50% !important; }
+  .w-md-75 { width: 75% !important; }
+  .w-md-100 { width: 100% !important; }
+  .w-md-auto { width: auto !important; }
+}
+@media (min-width: 992px) {
+  .w-lg-25 { width: 25% !important; }
+  .w-lg-50 { width: 50% !important; }
+  .w-lg-75 { width: 75% !important; }
+  .w-lg-100 { width: 100% !important; }
+  .w-lg-auto { width: auto !important; }
+}
+
+
+/* Color */
+.text-blue { color: #24BEE2; }
+.text-blueCyan { color: #007BFF; }
+.text-pumpkin { color: #DF6E00; }
+.text-danger { color: #E45735 !important; }
+.text-thmDark-1 { color: #FFFFFF !important; }
+.text-thmDark-2 { color: #CBCBCB !important;}
+.text-thmDark-3 { color: #A7A7A7 !important; }
+.text-thmLight-1 { color: #212121 !important; }
+.text-thmLight-2 { color: #767676 !important; }
+.text-thmLight-3 { color: #9F9F9F !important; }
+.text-muted { color: #999999 !important; }
+@media (min-width: 576px) {
+    .text-sm-thmDark-1 { color: #FFFFFF !important; }
+    .text-sm-thmDark-2 { color: #CBCBCB !important;}
+    .text-sm-thmDark-3 { color: #A7A7A7 !important; }
+    .text-sm-thmLight-1 { color: #212121 !important; }
+    .text-sm-thmLight-2 { color: #767676 !important; }
+    .text-sm-thmLight-3 { color: #9F9F9F !important; }
+}
+@media (min-width: 768px) {
+    .text-md-thmDark-1 { color: #FFFFFF !important; }
+    .text-md-thmDark-2 { color: #CBCBCB !important;}
+    .text-md-thmDark-3 { color: #A7A7A7 !important; }
+    .text-md-thmLight-1 { color: #212121 !important; }
+    .text-md-thmLight-2 { color: #767676 !important; }
+    .text-md-thmLight-3 { color: #9F9F9F !important; }
+}
+@media (min-width: 992px) {
+    .text-lg-thmDark-1 { color: #FFFFFF !important; }
+    .text-lg-thmDark-2 { color: #CBCBCB !important;}
+    .text-lg-thmDark-3 { color: #A7A7A7 !important; }
+    .text-lg-thmLight-1 { color: #212121 !important; }
+    .text-lg-thmLight-2 { color: #767676 !important; }
+    .text-lg-thmLight-3 { color: #9F9F9F !important; }
+}
+
+
+/* Cursor */
+.c-pointer { cursor: pointer !important; }
+
+
+/* Border */
+.border-top-0-first:first-child { border-top: 0 !important }
+.border-bottom-0-last:last-child { border-bottom: 0 !important }
+@media (min-width: 576px) {
+  .border-sm { border: 1px solid #dee2e6!important; }
+  .border-sm-top { border-top: 1px solid #dee2e6!important; }
+  .border-sm-bottom { border-bottom: 1px solid #dee2e6!important; }
+  .border-sm-bottom-nl:not(:last-child) { border-bottom: 1px solid #dee2e6!important; }
+  .border-sm-top-0 { border-top: 0 !important; }
+  .border-sm-bottom-0 { border-bottom: 0 !important; }
+}
+@media (min-width: 768px) {
+  .border-md { border: 1px solid #dee2e6!important; }
+  .border-md-top { border-top: 1px solid #dee2e6!important; }
+  .border-md-bottom { border-bottom: 1px solid #dee2e6!important; }
+  .border-md-bottom-nl:not(:last-child) { border-bottom: 1px solid #dee2e6!important; }
+  .border-md-top-0 { border-top: 0 !important; }
+  .border-md-bottom-0 { border-bottom: 0 !important; }
+}
+@media (min-width: 992px) {
+  .border-lg { border: 1px solid #dee2e6!important; }
+  .border-lg-top { border-top: 1px solid #dee2e6!important; }
+  .border-lg-bottom { border-bottom: 1px solid #dee2e6!important; }
+  .border-lg-bottom-nl:not(:last-child) { border-bottom: 1px solid #dee2e6!important; }
+  .border-lg-top-0 { border-top: 0 !important; }
+  .border-lg-bottom-0 { border-bottom: 0 !important; }
+}
+
+/* Border Style */
+.border-top-dash { border-top-style: dashed !important; }
+.border-bottom-dash { border-bottom-style: dashed !important; }
+
+/* Border Color */
+.border-thmDark { border-color: #2E2E2E !important; }
+.border-thmLight { border-color: #E3E3E3 !important; }
+
+
+/* BG */
+.bg-yellow { background-color: #FFF2D2; }
+
+
+/* Button */
+/* === Login / Member / Cart / Checkout / Forum / Informpayment / Onlinepayment / Contactus / Trackcode === */
+#formLogin .btn,
+#formRegister .btn,
+#formCart .btn,
+#formCheckout .btn,
+.divButtonAddTopic .btn {
+  font-family: "Open Sans", Tahoma;
+  font-size: 16px;
+}
+.btn-blue { background-color: #28bee3; color: #fff; }
+.btn-blue:hover, .btn-blue:focus, .btn-blue:focus { background-color: #09A1E0; color: #FFF; outline: none; }
+.btn-gray { background-color: #7C7C7C; color: #fff; }
+.btn-gray:hover, .btn-gray:focus, .btn-gray:focus { background-color: #7C7C7C; color: #FFF; outline: none; }
+.btn-default { background-color: #fff; color: #373e44; border-color: #8e969e; }
+.btn-default:hover, .btn-default:focus, .btn-default:focus { background-color: #e6e6e6; color: #373e44; border-color: #50565d; outline: none; }
+
+
+/* Form */
+.form-control {
+	font-family: "Open Sans", Tahoma;
+	font-size: 16px;
+}
+.was-validated label {
+  color: #E45735;
+}
+
+
+/* Table */
+
+
+
+/* === Login / Member / Cart / Checkout / Forum / Informpayment / Onlinepayment / Contactus / Trackcode === */
+#formLogin .btn, 
+#formRegister .btn, 
+#formCart .btn, 
+#formCheckout .btn, 
+.divButtonAddTopic .btn {
+	font-family: "Open Sans", Tahoma;
+	font-size: 16px;
+}
+
+
+/* Card */
+.card-thmDark {
+  background: #424242;
+  border: 1px solid rgba(0,0,0,0.125);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+.card-thmLight {
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.125);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+.card-header, .card-footer {
+	background-color: transparent;
+}
+
+
+/* CusForm */
+#cus-form > .attach_field > .p > input {
+  font-size: 16px !important;
+}
+#cus-form>.attach_field>.p>input {
+	font-size: 16px !important;
+}
+
+
+/* fix facebook likebox chrome */
+@media only screen and (min-width: 993px) and (max-width: 1024px) {
+	#side-fblikebox .fb-page.fb_iframe_widget>span {
+		max-width: 220px !important;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+	#side-fblikebox .fb-page.fb_iframe_widget>span {
+		max-width: 220px !important;
+	}
+}
+
+
+/* Tag Anchor MCE */
+.mce-item-anchor {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
+}
+
+#footer-area .fb-page.fb_iframe_widget>span {
+	max-width:90vw !important;
+}  
