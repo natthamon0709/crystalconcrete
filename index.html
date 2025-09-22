@@ -61,7 +61,6 @@
 
     <!-- JS Main -->
     <script src="ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="makeweb/prod/js/imagesloaded.min.js?v=1"></script>
     <script type="text/javascript" src="makeweb/prod/js/vue%402_6_11.js"></script>
@@ -3041,9 +3040,6 @@
                                                                 <img src="">
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            fetch("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=AVSAe8DuNb8").then(res => res.json()).then((data) => { $(".customHome2Object #AVSAe8DuNb8 img").attr('src', data.thumbnail_url); });
-                                                        </script>
                                                         <div>
                                                         </div>
                                                     </div>
@@ -3073,9 +3069,6 @@
                                                                 <img src="">
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            fetch("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=ti2WFTiQ2cU?si=Sojpeiaepn1tsqWR").then(res => res.json()).then((data) => { $(".customHome2Object #ti2WFTiQ2cU?si=Sojpeiaepn1tsqWR img").attr('src', data.thumbnail_url); });
-                                                        </script>
                                                         <div>
                                                         </div>
                                                     </div>
@@ -3106,9 +3099,6 @@
                                                                 <img src="">
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            fetch("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=CdGkIYdBaNg?si=lNJ2UTSSs_jb4laO").then(res => res.json()).then((data) => { $(".customHome2Object #CdGkIYdBaNg?si=lNJ2UTSSs_jb4laO img").attr('src', data.thumbnail_url); });
-                                                        </script>
                                                         <div>
                                                         </div>
                                                     </div>
@@ -3138,9 +3128,6 @@
                                                                 <img src="">
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            fetch("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=nmNbTrEJz1Y?si=0EXKASE9weqn0akV").then(res => res.json()).then((data) => { $(".customHome2Object #nmNbTrEJz1Y?si=0EXKASE9weqn0akV img").attr('src', data.thumbnail_url); });
-                                                        </script>
                                                         <div>
                                                         </div>
                                                     </div>
@@ -9902,9 +9889,6 @@
 
                                                 <script type="text/javascript">
 
-                                                    jQuery(".footerWechatWidget").click(function () {
-                                                        window.parent.showModalBS(1, '/include/social/dialogSettingSocialcontroller.php?menu=wechatqrcode', 'medium', 1);
-                                                    });
 
                                                 </script>
                                             </div>
@@ -10095,7 +10079,6 @@
     <script src="makeweb/prod/js/social-buttons.min.js"></script>
     <script src="makeweb/prod/js/popper.min.js"></script>
     <script src="bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="makeweb/prod/js/formValidation.min.js"></script>
     <script src="makeweb/prod/js/bootstrap.min.js"></script>
@@ -10463,28 +10446,6 @@
     <!-- Script Embed -->
     <!-- Script More -->
     <script type="text/javascript">
-        function myFunctionincount(id, gid, page, homid, place, local, pagetype) {
-            if (id !== '' && page !== '' && local !== '') {
-                jQuery.ajax({
-                    type: 'POST',
-                    url: '/customer/banner/store.php',
-                    data: {
-                        bnid: id,
-                        gid: gid,
-                        page: page,
-                        home: homid,
-                        place: place,
-                        local: local,
-                        pagetype: pagetype
-                    },
-                    success: function (returnData) {
-                        if (returnData != '') {
-                            console.log(returnData);
-                        }
-                    }
-                });
-            }
-        }
         $(function () {
             $('a[href*="#"]:not([href="#"])').click(function () {
                 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {

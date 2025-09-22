@@ -23,58 +23,6 @@ function addToCart(productID, productSkuID, productAttributeCrossID, imageUrl, a
     });
 } 
 
-async function addToCartShowDialog(productID, productSkuID, productAttributeCrossID, imageUrl, amount, productCode) {
-    var isNotOverStock_be = await getStockQuantityBalance(productID, productSkuID, productAttributeCrossID, amount);
-    var isNotOverStock = isNotOverStock_be.split('@@');
-    //console.log(isNotOverStock_be);
-    amount = (amount) ? amount : 1;
-    amount = (amount < 1) ? 1 : amount; // check negative amount
-    if(isNotOverStock[0] == 1){
-        productCode = encodeURIComponent(productCode);
-        jQuery.ajax({
-            type: 'POST',
-            url: '/include/customer/ajaxAddToCart.php',
-            data: {
-                'type': 'addToCart',
-                'productID': productID,
-                'productSkuID': productSkuID,
-                'productAttributeCrossID': productAttributeCrossID,
-                'imageUrl': imageUrl,
-                'amount': amount
-            },
-            beforeSend: function (xhr) {  },
-            success: function (data, textStatus, jqXHR) {                 
-                window.parent.showModalBS(1, '/include/customer/dialogProductAddToCartController.php?productID='+productID+'&productSkuID='+productSkuID+'&productCode='+productCode+'&amount='+amount, 'addToCart');
-            }
-        });
-    }else if(isNotOverStock[0] == 2){
-        showModalBS(1, '/page/page_cart/cartDialogErrorController.php?pagetype=noproduct2', 'medium');
-    }else if(isNotOverStock[0] == 3){
-        imageUrl2 = encodeURIComponent(imageUrl);
-        showModalBS(1, '/page/page_cart/cartDialogErrorController.php?pagetype=noproduct3&productID='+productID+'&productSkuID='+productSkuID+'&productCode='+productCode+'&amount='+amount+'&productAttributeCrossID='+productAttributeCrossID+'&promowarn='+isNotOverStock[1]+'&imageUrl='+imageUrl2, 'large');
-    }else if(isNotOverStock[0] == 5){
-        imageUrl2 = encodeURIComponent(imageUrl);
-        showModalBS(1, '/page/page_cart/cartDialogErrorController.php?pagetype=permisflash&productID='+productID+'&productSkuID='+productSkuID+'&productCode='+productCode+'&amount='+amount+'&productAttributeCrossID='+productAttributeCrossID+'&promowarn='+isNotOverStock[1]+'&imageUrl='+imageUrl2, 'large');
-    }else{
-        showModalBS(1, '/page/page_cart/cartDialogErrorController.php?pagetype=noproduct', 'medium');
-    }
-}
-
-function productGroupShowDialog(productID, productSkuID, productCode) {
-    productCode = encodeURIComponent(productCode);
-    window.parent.showModalBS(1, '/include/customer/dialogProductGroupController.php?productID='+productID+'&productSkuID='+productSkuID+'&productCode='+productCode, 'addToCartGroupProduct');
-}
-
-function drawWidgetCartFix() {
-    jQuery.ajax({
-        type: 'POST',
-        url: '/include/ajaxDrawWidgetCartFix.php',
-        success: function (data, textStatus, jqXHR) {
-            jQuery('.widget_cart_fix_display').html(data);
-        }
-    });
-}
-
 
 function addToCartAll() {
     var productIDAllArr = new Array();
@@ -278,92 +226,11 @@ jQuery('.btnAddToCartwish').on('click', function () {
     addToCartShowDialog(product_id, product_sku_id, product_attribute_cross_id, image_url, 1, product_code);
 });
 
-function validateAllProduct() {
-    jQuery.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            'productID': jQuery("#hiddenProductID").val(),
-            'type': 'checkAllProductHasByID'
-        },
-        success: function (returnData) {
-            if(returnData == 1){
-                jQuery('.addWishlist').addClass('disabled-tag-a').removeClass('disabled-tag-a');
-                jQuery('.compareProduct').addClass('disabled-tag-a').removeClass('disabled-tag-a');
-                jQuery(".btnAddToCartpdetail").prop('disabled',false);
-                getProductData();    
-            }else{
-                jQuery('.addWishlist').removeClass('disabled-tag-a').addClass('disabled-tag-a');
-                jQuery('.compareProduct').removeClass('disabled-tag-a').addClass('disabled-tag-a');
-                jQuery(".btnAddToCartpdetail").prop('disabled',true);
-            }
-        }
-    });
-}
-
-function validateCheckProduct() {
-    var attributeSelectAll = '';
-    $('[name="hiddenAttributeSelected[]"]').each(function() {
-        if($(this).val() != '0'){
-            attributeSelectAll += '[' + $(this).val() + '],' ;
-        }
-    })
-    attributeSelectAll = attributeSelectAll.substring(0, attributeSelectAll.length - 1);
-    jQuery.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            'productID': jQuery("#hiddenProductID").val(),
-            'attributeCross': attributeSelectAll,
-            'type': 'checkHasProduct'
-        },
-        success: function (returnData) {
-            if(returnData == 1){
-                jQuery('.addWishlist').addClass('disabled-tag-a').removeClass('disabled-tag-a');
-                jQuery('.compareProduct').addClass('disabled-tag-a').removeClass('disabled-tag-a');
-                getProductData();    
-            }else{
-                jQuery("#errorNumAttribute").show();
-                var errorNumText = getTextErrorInProductDetail();
-                jQuery("#errorNumText").html(errorNumText);
-                jQuery(".productStock").html('');
-                jQuery('.addWishlist').removeClass('disabled-tag-a').addClass('disabled-tag-a');
-                jQuery('.compareProduct').removeClass('disabled-tag-a').addClass('disabled-tag-a');
-                jQuery(".btnAddToCartpdetail").prop('disabled',true);
-            }
-        }
-    });
-}
-
-function disableOptionOutStock() {
-    $.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            type: "disableOption",
-            productID: jQuery('#hiddenProductID').val(),
-            attributeCross: jQuery('[name="hiddenAttributeSelected[]"]').serialize()
-        },
-        success: (response) => {
-            var res = $.parseJSON(response);
-            jQuery('.hiddenAttributeID option').prop('disabled', false);
-            jQuery('input.hiddenAttributeID').parent().removeClass('disabled');
-            $.each(res, (index, value) => {
-                if(value.has_stock == 0) {
-                    jQuery(`.hiddenAttributeID option[value="${value.product_attribute_member_id}"]`).prop('disabled', true);
-                    jQuery(`.hiddenAttributeID[value="${value.product_attribute_member_id}"]`).parent().addClass('disabled');
-                }
-            });
-        }
-    });
-}
-
 /* product details*/
 jQuery(document).ready(function () {
     if (jQuery('#hiddenProductTypeID').val() == '2') {
         disableOptionOutStock();
     }
-    validateAllProduct();
     getProductData();
     jQuery(".dropdownDetail").on('change', function () {
         jQuery(this).parent().find(".dropdownDetail").removeClass('borderError');
@@ -430,54 +297,6 @@ jQuery(document).ready(function () {
             }
         });
     }
-    jQuery('.addWishlist').on('click', function () {
-        var valid = validateAttribute();
-        if(valid <= 0){
-            if (parseInt(laogekgimember) > 0) {
-                var product_id = jQuery("#hiddenProductID").val();
-                var product_sku_id = jQuery("#hiddenProductSkuID").val();
-                var product_attribute_cross_id = jQuery(".productItemDetail .hiddenAttributeGroupID").val();
-                if(arrayData.isHaveWishlist == 1){
-                    jQuery.ajax({
-                        type: "POST",
-                        url: "/page/page_product_item/ajaxPageProductItemController.php",
-                        data: {
-                            type: 'delProductWishList',
-                            product_id: product_id,
-                            product_sku_id: product_sku_id,
-                            product_attribute_cross_id: product_attribute_cross_id
-                        },
-                        success: function (result) {
-                            eval(result);
-                            document.location.reload();
-                            // document.location.href = laogekgilanguse == 'th' ? `/member/wishlist` : `/${laogekgilanguse}/member/wishlist`;
-                        }
-                    });
-                } else {
-                    jQuery.ajax({
-                        type: "POST",
-                        url: "/page/page_product_item/ajaxPageProductItemController.php",
-                        data: {
-                            type: 'addProductWishList',
-                            product_id: product_id,
-                            product_sku_id: product_sku_id,
-                            product_attribute_cross_id: product_attribute_cross_id
-                        },
-                        success: function (result) {
-                            eval(result);
-                            document.location.reload();
-                            // document.location.href = laogekgilanguse == 'th' ? `/member/wishlist` : `/${laogekgilanguse}/member/wishlist`;
-                        }
-                    });
-                }
-            } else {
-                var product_id = jQuery("#hiddenProductID").val();
-                var product_sku_id = jQuery("#hiddenProductSkuID").val();
-                var product_attribute_cross_id = jQuery(".productItemDetail .hiddenAttributeGroupID").val();
-                showModalBS(1, '/page/page_product_item/wishlistDialogMemberController.php?type=login&product_id=' + product_id + '&product_sku_id=' + product_sku_id + '&product_attribute_cross_id=' + product_attribute_cross_id + '', 'cartlogin');
-            }
-        }   
-    });
 });
 
 jQuery(".btnAddToCartpdetail").on('click', function () {
@@ -494,20 +313,6 @@ jQuery(".btnAddToCartpdetail").on('click', function () {
         }
     }
 });
-
-function getStockQuantityBalance(productID,productSkuID,attributeCrossID,quantity){
-    return  $.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            'type': "checkStockQuantity",
-            'productID': productID,
-            'productSkuID': productSkuID,
-            'attributeCrossID': attributeCrossID,
-            'quantity': quantity
-        }
-    });
-}
 
 jQuery(window).on('load', function () {
     showImageProductDetail();
@@ -555,90 +360,6 @@ function getProductData() {
             getProductAttribute(attribute);
         }
     }
-}
-function getProductAttribute(attribute) {
-    jQuery(".productItemDetail .productPrice").html('<div class="iconLoadSlider loader" style="width: 50px;"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>');
-    jQuery.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            'productID': jQuery("#hiddenProductID").val(),
-            'productSkuID': jQuery("#hiddenProductSkuID").val(),
-            'attributeSet': attribute,
-            'type': 'getAttributeGroupID',
-            'pagetype': 'productdetail'
-        },
-        success: function (returnData) {
-            //console.log(returnData);
-            //jQuery('#testBugs').html(returnData);
-            arrayData = JSON.parse(returnData);
-            if(arrayData.isHaveWishlist == 1){
-                $('.addWishlist .fa-heart').removeClass('far').addClass('fa');
-            }else{
-                $('.addWishlist .fa-heart').removeClass('fa').addClass('far');
-            }
-            jQuery(".productItemDetail #hiddenProductSkuID").val(arrayData.skuID);
-            jQuery(".productItemDetail .productPrice").html(arrayData.price);
-            jQuery(".productItemDetail .hiddenAttributeGroupID").val(arrayData.cross);
-            jQuery(".productItemDetail #hiddenProductWeight").val(arrayData.weight);
-            jQuery(".productItemDetail .hiddenCheckAddToCart").val(arrayData.cart);
-            jQuery(".productItemDetail #hiddenProductCode").val(arrayData.productCode);
-            if(arrayData.flashsale!=''){
-                jQuery(".productItemDetail .flashbar").html(arrayData.flashsale);
-                jQuery(".productItemDetail #hiddenProductPromotion").val(arrayData.flashsaletimeremain);
-                var jimtime = jQuery(".productItemDetail #hiddenProductPromotion").val();
-                flstartCounter(jimtime,'pdetail','s');
-            }else{
-                jQuery(".productItemDetail .flashbar").html('');
-                jQuery(".productItemDetail #hiddenProductPromotion").val('');
-                flstartCounter('','pdetail','st');
-            }
-            if (arrayData.skuID === 0) {
-                if(arrayData.cross === 0 && arrayData.stock !== '') {
-                    /////////// Not have Cross Attribute ////////////
-                    jQuery(".productItemDetail .btnAddToCartpdetail").attr('disabled', 'disabled');
-                    jQuery(".productItemDetail .productStock").show();
-                    jQuery(".productItemDetail .productStock").html(arrayData.stock);
-                } else {
-                    ///////// First Load /////////
-                    jQuery(".productItemDetail .productSku").hide();
-                    jQuery(".productItemDetail .productStock").hide();
-                }
-            } else if(arrayData.cart == 0 && arrayData.skuID !== 0) {
-                ///////// Out Of Stock //////////
-                jQuery(".productItemDetail .btnAddToCartpdetail").addClass('disabled');
-                jQuery(".productItemDetail .productStock").show();
-                jQuery(".productItemDetail .productStock").html(arrayData.stock);
-                jQuery(".productItemDetail .productSku").show();
-                jQuery(".productItemDetail .productSku").html(arrayData.sku);
-            } else {
-                ///////// Has Stock //////////
-                jQuery(".productItemDetail .btnAddToCartpdetail").removeAttr('disabled');
-                jQuery(".productItemDetail .btnAddToCartpdetail").removeClass('disabled');
-                jQuery(".productItemDetail .productSku").show();
-                jQuery(".productItemDetail .productSku").html(arrayData.sku);
-                jQuery(".productItemDetail .productStock").show();
-                jQuery(".productItemDetail .productStock").html(arrayData.stock);
-            } 
-            if(arrayData.stringAttribute != 0) {
-                jQuery('.productAttr').show();
-                jQuery(".stringAttr").html(arrayData.stringAttribute);
-            } else {
-                jQuery('.productAttr').hide();
-                jQuery(".stringAttr").html("");
-            }
-            if(arrayData.configProductSell != 0) {
-                jQuery(".productItemDetail #config-product-sold").show();
-                jQuery(".productItemDetail #config-product-sold").html(arrayData.productsell);
-            } else {
-                jQuery(".productItemDetail #config-product-sold").hide();
-                jQuery(".productItemDetail #config-product-sold").html('');
-            }
-            changeProductImage();
-            changeUrlSku(arrayData.newUrl);
-            
-        }
-    });
 }
 
 function flstartCounter(timer,locat,turn) {
@@ -694,51 +415,6 @@ function changeUrlSku(url) {
     }
 }
 
-function changeProductImage(){
-    jQuery.ajax({
-        type: "POST",
-        url: "/page/page_product_item/ajaxPageProductItemController.php",
-        data: {
-            'productID': jQuery("#hiddenProductID").val(),
-            'productSkuID': jQuery("#hiddenProductSkuID").val(),
-            'type': 'changeImage'
-        },
-        success: function (returnData) {
-            //jQuery('#testBugs').html(returnData);
-            jQuery('#flslideProductUl').html('');
-            var arrayData = JSON.parse(returnData);
-            jQuery(".gall-item-container").remove();
-            var j=0;
-            jQuery.each(arrayData, function(i, item) {
-                //jQuery('#testBugs').html(j);
-                if(j == 0){
-                    jQuery("#zoomProduct").html('<a id="" class="gall-item" title="'+item.product_name+'" href="'+item.image_url_full+'"><img class="zoomImage img-responsive" data-mag="info0" data-src="'+item.image_url_full+'" src="'+item.image_url_full+'" alt="'+item.product_name+'" title="'+item.image_title+'"/></a>');
-                    jQuery('#hiddenCartImageDefault').val(item.image_url);
-                    jQuery('#hiddenCartImageDefaultFull').val(item.image_url_full);
-                    jQuery("#zoomProduct").after('<div id="fullImgZoom'+j+'" class="gall-item-container"><a href="'+item.image_url_full+'"></a></div>');
-                }else{
-                    jQuery("#fullImgZoom"+(j-1)).after('<div id="fullImgZoom'+j+'" class="gall-item-container"><a href="'+item.image_url_full+'"></a></div>');
-                }
-                
-                jQuery("#flslideProductUl").append('<li href="'+item.image_url_full+'" style="width: 63px; float: left; display: block;"><a class="zoomThumbLink2"><div id="info'+i+'" class="infoThumbProduct1" data-large="'+item.image_url_full+'"><img src="'+item.image_url_thmb+'" alt="'+item.image_alt+'" title="'+item.image_title+'" draggable="false" style="opcity:1; max-height: 50px;"/></div></a></li>');
-                jQuery("img.zoomImage").css('opacity','1');
-                jQuery("#info"+i).find("img").css('opacity','1');
-                j++;
-            }); 
-           jQuery('#info0').click();
-           if(plugins['magnificpopup'].isEnable) {
-                jQuery('.gall-item-container').magnificPopup({
-                    delegate: 'a',
-                    type: 'image',
-                    gallery: {
-                        enabled: true
-                    }
-                });
-            }
-           showImageProductDetail();
-        }
-    });
-}
 
 function showImageProductDetail(){
     jQuery(".iconLoadSlider").fadeOut();
@@ -767,53 +443,6 @@ function showImageProductDetail(){
         itemMargin: 15,
         customDirectionNav: $(".customProduct-navigation a")
     });
-}
-
-function validateAttribute(){ 
-    var errorNum = 0;
-    if(jQuery('#hiddenProductTypeID').val() === '2'){
-        jQuery(".hiddenAttributeSelected").each(function() {
-            if(jQuery(this).val() === '0'){
-                jQuery(this).parent().find(".dropdownDetail").addClass('borderError');
-                jQuery(this).parent().find(".colorItems").addClass('borderError');
-                jQuery(this).parent().find(".buttonDetail span").addClass('borderError');
-                errorNum++;
-            } else {
-                jQuery(this).parent().find(".dropdownDetail").removeClass('borderError');
-                jQuery(this).parent().find(".colorItems").removeClass('borderError');
-                jQuery(this).parent().find(".buttonDetail span").removeClass('borderError');
-            }
-        });
-
-        if(errorNum > 0 ){
-            jQuery.ajax({
-                type: "POST",
-                url: "/page/page_product_item/ajaxPageProductItemController.php",
-                data: {
-                    'type': 'returnTextChooseOption'
-                },
-                success: function (returnData) {
-                    // Focus on Mobile
-                    if($(window).width() < 768) {
-                        $([document.documentElement, document.body]).animate({
-                            scrollTop: $(".productName").offset().top - 100
-                        }, 500);
-                    }
-                    jQuery("#errorNumAttribute").show();
-                    jQuery("#errorNumText").html(returnData);
-                    jQuery(".productItemDetail .hiddenCheckAddToCart").val(0);
-                }
-            });
-        } else {
-            jQuery("#errorNumAttribute").hide();
-            if($(window).width() < 768) {
-                $([document.documentElement, document.body]).animate({
-                    scrollTop: $(".productName").offset().top - 100
-                }, 500);
-            }
-        }
-    }
-    return errorNum;
 }
 
 function compareProductClickCheckbox(jQueryObj, productID, productSkuID, pathImage, warntxt) {
@@ -1201,26 +830,6 @@ jQuery(".focusMap").click(function () {
 });
 
 
-function loadEventCalendarListBox(month, year) {
-    jQuery.ajax({
-        type: 'POST',
-        url: '/page/page_eventcalendar/ajaxEventCalendarHomeboxController.php',
-        data: {
-            'typ': 'gethtml',
-            'month': month,
-            'year': year
-        },
-        success: function (returnData) {
-            if (returnData) {
-                jQuery("#eventcalendarListBox").html(returnData);
-            }
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.log(xhr);
-        }
-    });
-}
-
 $(document).ready(function () {
     $window = $(window);
     if ($(window).width() > 1024) {
@@ -1244,10 +853,6 @@ jQuery('#btnAcceptPd').on('click', function () {
         setPdService(1);
     }
     jQuery('div.policy-position').hide();
-});
-
-jQuery('#btn_setting_cookie').on('click', function () {
-    showModalBS(0, '/include/pdpa/dialogPdpaController.php', 'large');
 });
 
 jQuery('.cls-poli-dialog').on('click', function () { 
@@ -1284,38 +889,4 @@ function setAceptpd(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function setPdService(time) {
-    if(time!=''){
-        jQuery.ajax({
-            type: 'post',
-            url: '/page/page_policy/ajaxPolicyController.php',
-            data: {
-                'type': 'acep'
-            },
-            beforeSend: function (xhr) {
-            
-            },
-            success: function (data, textStatus, jqXHR) {
-                if (data !== '1') {
-                console.log(data);
-                }
-            }
-        });
-    }
-// base64 encode the data
-function bs64encode(data) {
-    if (typeof data === "object") {
-      data = JSON.stringify(data);
-    }
-  
-    return bs64escape(data.toString("base64"));
-}
-  
-// modify the base64 string to be URL safe
-function bs64escape(string) {
-    return string.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
-}
-
 }
